@@ -1,11 +1,13 @@
 from Pila.Pila import Pila
 from ListaEnlazada.ListaSimple import ListaSimple
+from Cola.Cola import Cola
 
 def mostrar_menu_principal():
     print("\n--- Menú Principal ---")
     print("1. Operaciones con Lista Simple")
     print("2. Operaciones con Pila")
-    print("3. Salir")
+    print("3. Operaciones con Cola")
+    print("4. Salir")
 
 def mostrar_menu_listas():
     print("\n--- Menú de Operaciones con Lista Simple ---")
@@ -33,7 +35,6 @@ def operaciones_listas():
             try:
                 print("\n--- ELIMINAR ELEMENTO ---")
                 print(f"Lista actual: {lista}")
-        
                 valor = input("Ingrese el valor a eliminar: ")     
                 elemento_eliminado = lista.eliminar(valor)       
                 if elemento_eliminado is not None:
@@ -83,6 +84,39 @@ def operaciones_pila():
         else:
             print("Opción no válida. Intente de nuevo.")
 
+def mostrar_menu_cola():
+    print("\n--- Menú de Operaciones con Cola ---")
+    print("1. Encolar elemento")
+    print("2. Desencolar elemento")
+    print("3. Ver frente")
+    print("4. Mostrar cola")
+    print("5. Volver al menú principal")
+
+def operaciones_cola():
+    cola = Cola()
+    while True:
+        mostrar_menu_cola()
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            data = input("Ingrese el elemento a encolar: ")
+            cola.encolar(data)
+            print(f"Elemento {data} encolado.")
+        elif opcion == "2":
+            elemento = cola.desencolar()
+            if elemento is not None:
+                print(f"Elemento {elemento} desencolado.")
+        elif opcion == "3":
+            frente = cola.ver_frente()
+            if frente is not None:
+                print(f"Elemento al frente: {frente}")
+        elif opcion == "4":
+            cola.mostrar_cola()
+        elif opcion == "5":
+            break
+        else:
+            print("Opción no válida. Intente de nuevo.")
+
 def main():
     while True:
         mostrar_menu_principal()
@@ -93,6 +127,8 @@ def main():
         elif opcion_principal == "2":
             operaciones_pila()
         elif opcion_principal == "3":
+            operaciones_cola()
+        elif opcion_principal == "4":
             print("Saliendo del programa...")
             break
         else:
