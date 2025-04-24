@@ -30,4 +30,16 @@ class Nodo:
             print("Error: Cola vacía")
             return None
         return self.frente.valor
-        
+    def obtener_longitud(self):
+        return self.longitud
+
+    def mostrar_cola(self):
+        print("\nEstado actual de la cola:")
+        actual = self.frente
+        if not actual:
+            print("<vacia>")
+        else:
+            while actual:
+                print(f"[ {actual.valor} ]", end=" -> ")
+                actual = actual.siguiente
+            print("None")        
