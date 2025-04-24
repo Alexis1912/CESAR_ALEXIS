@@ -2,6 +2,14 @@ class Nodo:
     def __init__(self, valor):
         self.valor = valor
         self.siguiente = None
+
+class Cola:
+
+    def __init__(self):
+        self.frente = None
+        self.final = None
+        self.longitud = 0
+
     def esta_vacia(self):
         return self.frente is None
 
